@@ -8,8 +8,9 @@
     {%csrf_token%}
     {% if error %}
         <h2>{{ error }}</h2>
-    {{autor_form.as_p}}
-        
+    {% else %}
+        {{autor_form.as_p}}
+    {% endif %}
         <button type="submit">Crear</button>
     </form>
 {% endblock body %}

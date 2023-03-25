@@ -23,6 +23,7 @@ def listAutor(request):
     return render(request,'libros/autor_list.html',{'autores': autores})
 
 def editarAutor(request, id):
+    autor_form = None
     try:
         autor = Autor.objects.get(id = id)          #get is for only one result, when I need information is used method GET, when submit is POST method
         if request.method == 'GET':
