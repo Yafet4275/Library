@@ -10,7 +10,11 @@
         <h2>{{ error }}</h2>
     {% else %}
         {{autor_form.as_p}}
-    {% endif %}
         <button type="submit">Crear</button>
-    </form>
+        <br>
+        <br>
+        <a href="{% url 'authorList' %}">Author list</a>
+    {% endif %}
+    
+</form>
 {% endblock body %}

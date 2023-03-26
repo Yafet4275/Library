@@ -13,6 +13,7 @@
                 <th>Apellidos</th>
                 <th>Nacionalidad</th>
                 <th>Description</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,13 +24,17 @@
                 <td>{{autor.apellidos}}</td>
                 <td>{{autor.nacionalidad}}</td>
                 <td>{{autor.description}}</td>
+                <td>
+                    <a href="{% url 'authorEdit' autor.id %}">Edit</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
     {% endif %}
-
+    <br>
+    <a href="{% url 'index' %}">Home</a>
 {% endblock body %}
 
 <!DOCTYPE html>

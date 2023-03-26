@@ -22,10 +22,11 @@ def listAutor(request):
     print(autores)
     return render(request,'libros/autor_list.html',{'autores': autores})
 
-def editarAutor(request, id):
+def editAuthor(request, id):
     autor_form = None
+    error = None
     try:
-        autor = Autor.objects.get(id = id)          #get is for only one result, when I need information is used method GET, when submit is POST method
+        autor = Autor.objects.get(id = id)          #Get is for only one result, when I need information is used method GET, when submit is POST method
         if request.method == 'GET':
             autor_form = Autorform(instance = autor)
         else:
@@ -34,5 +35,6 @@ def editarAutor(request, id):
                 autor_form.save()
             return redirect('index')
     except ObjectDoesNotExist as e:
-        error  = e
-    return render(request, 'libros/crear_autor.html',{'autor_form': autor_form, 'error':error})
+        error = "It doesn't exist"                  #Manage the error when user doesn't exist
+    return render(request, 'libros/crear_autor.html',{'autor_form':autor_form, 'error':error})
+    
