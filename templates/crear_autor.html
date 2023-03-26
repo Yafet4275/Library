@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Crear autor
+{% endblock title %}
+{% block body %}
+<form method="POST">
+    {%csrf_token%}
+    {% if error %}
+        <h2>{{ error }}</h2>
+    {% else %}
+        <!-- <label>Names</label>
+        <input type="text" name="nombre">       Names has to be the same from form.py
+        <label>Apellidos</label>
+        <input type="text" name="apellidos">
+        <label>Nacionalidad</label>
+        <input type="text" name="nacionalidad">
+        <label>Description</label>
+        <input type="text" name="description"> -->
+        <br>
+        {{ autor_form.as_p }}
+        <button type="submit">Crear</button>
+        <br>
+        <br>
+        <a href="{% url 'authorList' %}">Author list</a>
+        <br>
+        <a href="{% url 'index' %}">Home</a>
+    {% endif %}
+    
+</form>
+{% endblock body %}
