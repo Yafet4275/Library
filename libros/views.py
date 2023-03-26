@@ -18,7 +18,7 @@ def crearAutor(request):
     return render(request,'libros/crear_autor.html',{'autor_form':autor_form})
 
 def listAutor(request):
-    autores = Author.objects.all()
+    autores = Author.objects.filter(status = True)
     print(autores)
     return render(request,'libros/autor_list.html',{'autores': autores})
 
@@ -38,15 +38,16 @@ def editAuthor(request, id):
         error = "It doesn't exist"                  #Manage the error when user doesn't exist
     return render(request, 'libros/crear_autor.html',{'autor_form':autor_form, 'error':error})
 
-def deleteAuthor(request, id):                      #Permanent delete from data base 
-    author = Author.objects.filter(status = True)             #Get author to be deleted
+def deleteAuthor(request, id):                      #Logic delete from data base 
+    author = Author.objects.get(id = id)            #Get author to be deleted
     if request.method == 'POST':
-        author.delete()
+        author.status = False
+        author.save()
         return redirect('authorList')
     return render(request, 'libros/author_delete.html',{'author':author})
 
 # def deleteAuthor(request, id):                      #Permanent delete from data base 
-#     author = Author.objects.get(id = id)             #Get author to be deleted
+#     author = Author.objects.get(id = id)            #Get author to be deleted
 #     if request.method == 'POST':
 #         author.delete()
 #         return redirect('authorList')
