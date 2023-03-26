@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import Home, crearAutor, listAutor, editAuthor
+from .views import Home, crearAutor, listAutor, editAuthor, deleteAuthor
 
 urlpatterns = [
-    path('crear_autor/', crearAutor, name='crearAutor'),
     path('author_list/', listAutor, name='authorList'),
-    path('autor_edit/<int:id>', editAuthor, name='authorEdit') 
+    path('author_create/', crearAutor, name='authorCreate'),
+    path('autor_edit/<int:id>', editAuthor, name='authorEdit'),
+    path('author_delete/<int:id>', deleteAuthor, name='authorDelete') 
 ]

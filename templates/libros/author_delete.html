@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Author delete
+{% endblock title %}
+{% block body %}
+<form method="POST">
+    {%csrf_token%}
+    <h2>Are you sure you want delete {{ author.name }} ?</h2>
+    <button type="submit">Delete</button>
+    <a href="{% url 'authorList' %}">Cancel</a>
+</form>
+{% endblock body %}
